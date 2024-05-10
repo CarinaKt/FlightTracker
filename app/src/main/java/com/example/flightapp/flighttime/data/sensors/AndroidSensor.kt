@@ -1,10 +1,11 @@
-package com.example.flightapp.flighttime.data
+package com.example.flightapp.flighttime.data.sensors
 
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import com.example.flightapp.flighttime.data.MeasurableSensor
 
 abstract class AndroidSensor(
     private val context: Context,

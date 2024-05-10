@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import com.example.flightapp.ui.theme.FlightTimeTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
@@ -32,8 +33,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FlightTimeTheme {
+                
                 val viewModel = viewModel<SensorViewModel>()
                 val isDark = viewModel.isDark
+                val temp = viewModel.temp
+                val pressure = viewModel.pressure
+                val accelerationX = viewModel.accelerationX
+                
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -42,14 +48,17 @@ class MainActivity : ComponentActivity() {
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
+                    /*Text(
                         text = if(isDark) {
                             "It's dark outside"
                         } else {
                             "It's bright outside"
                         },
                         color = if(isDark) Color.White else Color.DarkGray
-                    )
+                    )*/
+                    Text(text = "Temp: $temp")
+                    //Text(text = "Pressure: $pressure")
+                    //Text(text = "AcelerationX: $accelerationX")
                 }
                 /*
                 Surface(

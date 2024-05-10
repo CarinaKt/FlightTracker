@@ -5,17 +5,18 @@ import androidx.room.Room
 import com.example.flightapp.flighttime.data.MeasurableSensor
 import com.example.flightapp.flighttime.data.data_source.FlightDatabase
 import com.example.flightapp.flighttime.data.repository.FlightRepositoryImpl
-//import com.example.flightapp.flighttime.data.repository.SensorRepositoryImpl
 import com.example.flightapp.flighttime.domain.repository.FlightRepository
-//import com.example.flightapp.flighttime.domain.repository.SensorRepository
-import com.example.flightapp.flighttime.presentation.senor.LightSensor
 import com.example.flightapp.flighttime.domain.use_case.*
+import com.example.flightapp.flighttime.presentation.senor.AccelerometerSensor
+import com.example.flightapp.flighttime.presentation.senor.BarometerSensor
+import com.example.flightapp.flighttime.presentation.senor.LightSensor
+import com.example.flightapp.flighttime.presentation.senor.TemperatureSensor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
-
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -39,14 +40,31 @@ object AppModule {
 
     @Provides
     @Singleton
+    @Named("LightSensor")
     fun provideLightSensor(app: Application): MeasurableSensor {
         return LightSensor(app)
     }
-/*    @Provides
+
+    @Provides
     @Singleton
-    fun provideSensorRepository(sensorManager: SensorManager): SensorRepository {
-        return SensorRepositoryImpl(sensorManager)
-    }*/
+    @Named("TemperatureSensor")
+    fun provideTemperatureSensor(app: Application): MeasurableSensor {
+        return TemperatureSensor(app)
+    }
+
+    @Provides
+    @Singleton
+    @Named("BarometerSensor")
+    fun provideBarometerSensor(app: Application): MeasurableSensor {
+        return BarometerSensor(app)
+    }
+
+    @Provides
+    @Singleton
+    @Named("AcceleratorSensor")
+    fun provideAcceleratorSensor(app: Application): MeasurableSensor {
+        return AccelerometerSensor(app)
+    }
 
     @Provides
     @Singleton
