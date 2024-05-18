@@ -1,5 +1,7 @@
 package com.example.flightapp.flighttime.presentation.senor
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.flightapp.flighttime.data.sensors.SensorService
 
 @ExperimentalAnimationApi
 @Composable

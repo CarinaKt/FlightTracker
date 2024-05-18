@@ -1,5 +1,6 @@
 package com.example.flightapp.flighttime.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -8,10 +9,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.*
 import com.example.flightapp.ui.theme.FlightTimeTheme
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
@@ -21,6 +21,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.flightapp.flighttime.data.sensors.SensorService
 import com.example.flightapp.flighttime.presentation.util.Screen
 import com.example.flightapp.flighttime.presentation.senor.SensorScreen
 import com.example.flightapp.flighttime.presentation.senor.SensorViewModel
@@ -59,6 +60,31 @@ class MainActivity : ComponentActivity() {
                     Text(text = "Temp: $temp")
                     //Text(text = "Pressure: $pressure")
                     //Text(text = "AcelerationX: $accelerationX")
+                }
+
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center
+                ) {
+
+                    Button(onClick = {
+                        Intent(applicationContext, SensorService::class.java).also {
+                            it.action = SensorService.Actions.START.toString()
+                            startService(it)
+                        }
+                    }) {
+                        Text(text = "Start")
+                    }
+
+
+                    Button(onClick = {
+                        Intent(applicationContext, SensorService::class.java).also {
+                            it.action = SensorService.Actions.STOP.toString()
+                            startService(it)
+                        }
+                    }) {
+                        Text(text = "Stop")
+                    }
                 }
                 /*
                 Surface(
