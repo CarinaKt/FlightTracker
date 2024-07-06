@@ -17,13 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.example.flightapp.flighttime.data.sensors.SensorService
 import com.example.flightapp.flighttime.presentation.navigation.NavGraph
-import com.example.flightapp.flighttime.presentation.navigation.Screen
-import com.example.flightapp.flighttime.presentation.senor.SensorScreen
 import com.example.flightapp.flighttime.presentation.senor.SensorViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,73 +42,12 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                 ) {
-                    NavGraph(this.application, temp, pressure, accelerationX)
+                    NavGraph(this.application)
                     /*Main(
                         applicationContext = this.application,
                         temp, pressure, accelerationX
                     )*/
                 }
-/*              Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.SpaceEvenly,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(10.dp, 0.dp, 10.dp, 0.dp),
-                        horizontalArrangement = Arrangement.Start,
-                        verticalAlignment = Alignment.Top,
-                    ){
-                        SensorData(data = temp, data2 = pressure, data3 = accelerationX)
-                    }
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        Button(
-                            shape = MaterialTheme.shapes.small,
-                            contentPadding = PaddingValues(25.dp, 15.dp, ),
-                            onClick = {
-                                Intent(applicationContext, SensorService::class.java).also {
-                                    it.action = SensorService.Actions.START.toString()
-                                    startService(it)
-                                }
-                            },
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            Text(
-                                text = "Start",
-                                fontSize = 24.sp,
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.size(10.dp))
-
-                        Button(
-                            shape = MaterialTheme.shapes.small,
-                            contentPadding = PaddingValues(25.dp, 15.dp, ),
-                            onClick = {
-                                Intent(applicationContext, SensorService::class.java).also {
-                                    it.action = SensorService.Actions.STOP.toString()
-                                    startService(it)
-                                }
-                            },
-                            modifier = Modifier.weight(1f)
-                        ) {
-                            Text(
-                                text = "Stop",
-                                fontSize = 24.sp
-                            )
-                        }
-                    }
-
-                } */
-
-
             }
         }
 

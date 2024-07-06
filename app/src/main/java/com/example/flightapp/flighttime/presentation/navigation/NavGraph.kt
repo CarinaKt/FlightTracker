@@ -17,16 +17,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 @Composable
 fun NavGraph(
     applicationContext: Application,
-    temp: Float,
-    pressure: Float,
-    accelerationX: Float,
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
     startDestination: String = Screen.SensorScreen.route
 ) {
     NavHost(navController = navController, startDestination = startDestination, modifier = modifier) {
         composable(route = Screen.SensorScreen.route) {
-            SensorScreen(applicationContext, temp, pressure, accelerationX)
+            SensorScreen(applicationContext, navController)
         }
         composable(route = Screen.LightScreen.route) {
             LightScreen(navController = navController)

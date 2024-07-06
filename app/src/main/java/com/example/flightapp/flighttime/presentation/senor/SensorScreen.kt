@@ -28,10 +28,13 @@ import com.example.flightapp.flighttime.presentation.navigation.Screen
 @Composable
 fun SensorScreen(
     applicationContext: Application,
-    temp: Float,
-    pressure: Float,
-    accelerationX: Float
+    navController: NavController,
+    viewModel: SensorViewModel = hiltViewModel()
 ){
+    val temp = viewModel.temp
+    val pressure = viewModel.pressure
+    val accelerationX = viewModel.accelerationX
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -88,6 +91,16 @@ fun SensorScreen(
                     fontSize = 24.sp
                 )
             }
+        }
+
+        Row(){
+            Button(
+                onClick = {
+                    navController.navigate(Screen.LightScreen.route)
+                }){
+                Text(text = "Screen")
+            }
+
         }
 
     }

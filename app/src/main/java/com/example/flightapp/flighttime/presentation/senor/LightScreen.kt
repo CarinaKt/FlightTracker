@@ -1,7 +1,5 @@
 package com.example.flightapp.flighttime.presentation.senor
 
-import android.content.Context
-import android.content.Intent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,9 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.flightapp.flighttime.data.sensors.SensorService
+import com.example.flightapp.flighttime.presentation.navigation.Screen
 
 @ExperimentalAnimationApi
 @Composable
@@ -24,7 +21,6 @@ fun LightScreen(
     navController: NavController,
     viewModel: SensorViewModel = hiltViewModel()
 ) {
-    //val viewModel = viewModel<SensorViewModel>()
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
     val isDark = viewModel.isDark
@@ -40,7 +36,7 @@ fun LightScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    //navController.navigate(Screen.FlightScreen.route)
+                    navController.navigate(Screen.SensorScreen.route)
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
