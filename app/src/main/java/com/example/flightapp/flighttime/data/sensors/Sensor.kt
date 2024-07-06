@@ -39,3 +39,11 @@ class AccelerometerSensor(
     sensorFeature = PackageManager.FEATURE_SENSOR_ACCELEROMETER,
     sensorType = Sensor.TYPE_LINEAR_ACCELERATION
 )
+
+class HumiditySensor(
+    context: Context
+): AndroidSensor(
+    context = context,
+    sensorFeature = PackageManager.FEATURE_SENSOR_RELATIVE_HUMIDITY,
+    sensorType = Sensor.TYPE_RELATIVE_HUMIDITY
+)

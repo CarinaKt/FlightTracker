@@ -7,10 +7,7 @@ import com.example.flightapp.flighttime.data.data_source.FlightDatabase
 import com.example.flightapp.flighttime.data.repository.FlightRepositoryImpl
 import com.example.flightapp.flighttime.domain.repository.FlightRepository
 import com.example.flightapp.flighttime.domain.use_case.*
-import com.example.flightapp.flighttime.presentation.senor.AccelerometerSensor
-import com.example.flightapp.flighttime.presentation.senor.BarometerSensor
-import com.example.flightapp.flighttime.presentation.senor.LightSensor
-import com.example.flightapp.flighttime.presentation.senor.TemperatureSensor
+import com.example.flightapp.flighttime.presentation.senor.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -64,6 +61,13 @@ object AppModule {
     @Named("AcceleratorSensor")
     fun provideAcceleratorSensor(app: Application): MeasurableSensor {
         return AccelerometerSensor(app)
+    }
+
+    @Provides
+    @Singleton
+    @Named(" HumiditySensor")
+    fun provideHumiditySensor(app: Application): MeasurableSensor {
+        return HumiditySensor(app)
     }
 
     @Provides
