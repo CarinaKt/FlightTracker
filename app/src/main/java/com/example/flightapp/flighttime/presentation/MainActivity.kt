@@ -76,15 +76,19 @@ class MainActivity : ComponentActivity() {
                 //}
 
                 Column(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
                     verticalArrangement = Arrangement.SpaceEvenly,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
                     Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp,0.dp,10.dp,0.dp),
                         horizontalArrangement = Arrangement.Start,
                         verticalAlignment = Alignment.Top,
-                        modifier = Modifier.padding(10.dp,5.dp,5.dp, 50.dp )
                     ){
                         SensorData(data = temp, data2 = pressure, data3 = accelerationX)
                     }
@@ -97,11 +101,12 @@ class MainActivity : ComponentActivity() {
                             shape = MaterialTheme.shapes.small,
                             contentPadding = PaddingValues(25.dp, 15.dp, ),
                             onClick = {
-                            Intent(applicationContext, SensorService::class.java).also {
-                                it.action = SensorService.Actions.START.toString()
-                                startService(it)
-                            }
-                        }
+                                Intent(applicationContext, SensorService::class.java).also {
+                                    it.action = SensorService.Actions.START.toString()
+                                    startService(it)
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
                         ) {
                             Text(
                                 text = "Start",
@@ -109,15 +114,19 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
+                        Spacer(modifier = Modifier.size(10.dp))
+
                         Button(
                             shape = MaterialTheme.shapes.small,
                             contentPadding = PaddingValues(25.dp, 15.dp, ),
                             onClick = {
-                            Intent(applicationContext, SensorService::class.java).also {
-                                it.action = SensorService.Actions.STOP.toString()
-                                startService(it)
-                            }
-                        }) {
+                                Intent(applicationContext, SensorService::class.java).also {
+                                    it.action = SensorService.Actions.STOP.toString()
+                                    startService(it)
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
                             Text(
                                 text = "Stop",
                                 fontSize = 24.sp
