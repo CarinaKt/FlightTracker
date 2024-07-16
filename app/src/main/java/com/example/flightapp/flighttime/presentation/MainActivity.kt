@@ -29,11 +29,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FlightTimeTheme {
-                
-                val viewModel = viewModel<SensorViewModel>()
-                val temp = viewModel.temp
-                val pressure = viewModel.pressure
-                val accelerationX = viewModel.accelerationX
 
                 Scaffold(
                     topBar = {

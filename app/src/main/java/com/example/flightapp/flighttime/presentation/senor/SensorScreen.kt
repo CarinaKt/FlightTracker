@@ -9,11 +9,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -49,7 +49,11 @@ fun SensorScreen(
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.Top,
         ){
-            SensorData(data = temp, data2 = pressure, data3 = accelerationX)
+            Column() {
+                SensorDataText(decorator = "temp", data = temp)
+                SensorDataText(decorator = "pressure", data = pressure)
+                SensorDataText(decorator = "acceleration", data = accelerationX )
+            }
         }
 
         Row(
@@ -104,4 +108,14 @@ fun SensorScreen(
         }
 
     }
+}
+
+@Composable
+fun SensorDataText(decorator: String, data: Float){
+    Text(
+        text = "$decorator: $data",
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(16.dp)
+    )
 }
